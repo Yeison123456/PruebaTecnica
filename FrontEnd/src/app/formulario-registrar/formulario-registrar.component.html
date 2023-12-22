@@ -1,0 +1,30 @@
+<button type="button" class="registrar" (click)="abrirModalRegistrar()" >Registrar</button>
+
+
+
+<div class="modal-overlay" id="modalOverlay" *ngIf="modal==true">
+  <div class="modall">
+    <h1 style="color: black; font-size: 40px; margin-top: 2%;">Registrar usuario</h1>
+    <form action="">
+      <input type="number" placeholder="Numero de documento" name="numeroDocumentoUsuario" [(ngModel)]="numeroDocumentoUsuario">
+      <input type="text" placeholder="Nombres" name="nombresUsuario" [(ngModel)]="nombresUsuario">
+      <input type="text" placeholder="Apellidos" name="apellidosUsuario" [(ngModel)]="apellidosUsuario">
+      <select name="ciudad" [(ngModel)]="idCiudadFKUsuario">
+        <option *ngFor="let ciudad of ciudades" [value]="ciudad.idCiudad">{{ ciudad.nombreCiudad }}</option>
+      </select>
+      <input type="date" placeholder="Fecha" name="fechaNacimientoUsuario" [(ngModel)]="fechaNacimientoUsuario">
+      <input type="email" placeholder="Correo" name="emailUsuario" [(ngModel)]="emailUsuario">
+      <input type="number" placeholder="Telefono" name="telefonoUsuario" [(ngModel)]="telefonoUsuario">
+      <select  name="ocupacion" [(ngModel)]="idOcupacionFKUsuario">
+        <option *ngFor="let ocupacion of ocupaciones" [value]="ocupacion.idOcupacion" >{{ ocupacion.ocupacion }}</option>
+      </select>
+
+      <div class="botones">
+        <button class="btn btn-cancelar" (click)="cerrarModal()">Cancelar</button>
+        <button class="btn" (click)="registrar()" >Registrar</button>
+
+      </div>
+    </form>
+  </div>
+</div>
+
