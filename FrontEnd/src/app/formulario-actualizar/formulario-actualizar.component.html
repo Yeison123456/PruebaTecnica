@@ -3,20 +3,31 @@
   <div class="modall">
     <h1 style="color: black; font-size: 40px;">Actualizar usuario</h1>
     <form action="">
-      <input type="text" placeholder="Nombres" required>
-      <input type="text" placeholder="Apellidos" required>
-      <input type="text" placeholder="Ciudad" required>
-      <input type="date" placeholder="Fecha" required>
-      <input type="email" placeholder="Correo" required>
-      <input type="number" placeholder="Telefono" required>
-      <input type="text" placeholder="Ocupacion" required>
 
-      <div class="botones">
-        <!-- <button class="btn btn-cancelar" (click)="cerrarModal(">Cancelar</button> -->
-        <button class="btn" >Actualizar</button>
+      <input type="text" placeholder="Nombres" name="nombresUsuario" [(ngModel)]="nombresUsuario">
+      <input type="text" placeholder="Apellidos" name="apellidosUsuario" [(ngModel)]="apellidosUsuario">
+      <input type="text" name="ciudad" placeholder="Ciudad" [(ngModel)]="idCiudadFKUsuario" list="listaCiudades">
+      
+      <datalist id="listaCiudades"> 
+        <option *ngFor="let ciudad of ciudades" [value]="ciudad.idCiudad">{{ ciudad.nombreCiudad}}</option>
+      </datalist>
 
-      </div>
+      <input type="date" placeholder="Fecha" name="fechaNacimientoUsuario" [(ngModel)]="fechaNacimientoUsuario">
+      <input type="email" placeholder="Correo" name="emailUsuario" [(ngModel)]="emailUsuario">
+      <input type="number" placeholder="Telefono" name="telefonoUsuario" [(ngModel)]="telefonoUsuario">
+      <input type="text"  name="ocupacion" placeholder="Ocupacion" [(ngModel)]="idOcupacionFKUsuario" list="listaOcupaciones">
+        
+        <datalist id="listaOcupaciones"> 
+          <option *ngFor="let ocupacion of ocupaciones" [value]="ocupacion.idOcupacion" >{{ ocupacion.ocupacion }}</option>
+        </datalist>
+
     </form>
+    <div class="botones">
+      <button class="btn btn-cancelar" (click)="cerrarModal()">Cancelar</button>
+      <p *ngIf="errorCampo" style="font-size: 15px; color: red; ">{{errorCampo}}</p>
+      <button class="btn" (click)="actualizar()">Actualizar</button>
+
+    </div>
   </div>
 </div>
 

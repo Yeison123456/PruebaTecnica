@@ -28,7 +28,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let usuario of usuarios">
+          <tr *ngFor="let usuario of datosPaginados">
             <td>{{usuario.numeroDocumentoUsuario}}</td>
             <td>{{ usuario.nombresUsuario }}</td>
             <td>{{ usuario.apellidosUsuario }}</td>
@@ -39,14 +39,21 @@
             <td>{{ usuario.telefonoUsuario }}</td>
             <td>{{ usuario.estadoUsuario === 1 ? 'Activo' : 'Inactivo' }}</td>
             <td>{{ usuario.idOcupacionFKUsuario }}</td>
-            <td></td>
+            <td>{{ usuario.viabilidad === 1 ? 'Si es viable' : 'No es viable' }}</td>
             <td style="display: flex; flex-direction: column;">
               <button class="acciones" type="button" (click)="CambiarEstado(usuario.numeroDocumentoUsuario)">{{ usuario.estadoUsuario === 1 ? 'Inactivar' : 'Activar'}}</button>
-              <button type="button" class="actualizar" (click)="enviarDato(usuario.numeroDocumentoUsuario)" >Actualizar</button>
+              <button type="button" class="acciones" (click)="enviarDato(usuario.numeroDocumentoUsuario)" >Actualizar</button>
             </td>
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="paginacion">
+      <button *ngFor="let pagina of paginas"
+              (click)="cambiarPagina(pagina)"
+              [class.activa]="pagina === paginaActual">
+        {{ pagina }}
+      </button>
     </div>
     <div *ngIf="!usuarios || usuarios.length === 0">
       <p style="font-size: 30px; margin-top: 40px;">No hay clientes disponibles.</p>

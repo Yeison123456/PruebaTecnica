@@ -35,7 +35,7 @@
 
 .modall {
   background-color: white;
-  width: 80%;
+  width: 50%;
   border-radius: 15px;
   border: solid 1px rgb(37, 37, 232);
   height: 600px;
@@ -46,10 +46,11 @@
 }
 
 form{
-  width: 90%;
+  width: 75%;
   display: flex;
-  gap: 5%;
   flex-wrap: wrap;
+  gap: 2%;
+  margin: 5%;
 }
 
 input{
@@ -84,10 +85,22 @@ input{
   color: aliceblue;
 }
 
+select{
+  font-size: 20px;
+  width: 32%;
+  height: 37px;
+  margin-top: 1%;
+  border-radius: 5px;
+  border: solid 2px rgb(37, 37, 232);
+}
+
+option{
+  font-size: 20px;
+}
 
 
 .botones{
-  width: 100%;
+  width: 75%;
   display: flex;
   justify-content: space-between;
 }

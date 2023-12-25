@@ -39,4 +39,22 @@ export class DashboardComponent {
       this.router.navigate(['/receptor', numDoc]);
 
     }
+
+    itemsPorPagina = 5;
+    paginaActual = 1;
+
+    get datosPaginados() {
+      const inicio = (this.paginaActual - 1) * this.itemsPorPagina;
+      const fin = inicio + this.itemsPorPagina;
+      return this.usuarios.slice(inicio, fin);
+    }
+
+    get paginas(): number[] {
+      const totalPaginas = Math.ceil(this.usuarios.length / this.itemsPorPagina);
+      return Array.from({ length: totalPaginas }, (_, index) => index + 1);
+    }
+
+    cambiarPagina(pagina: number) {
+      this.paginaActual = pagina;
+    }
   }
