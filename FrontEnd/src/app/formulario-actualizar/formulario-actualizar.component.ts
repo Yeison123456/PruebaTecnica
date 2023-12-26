@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 
 
@@ -73,6 +74,11 @@ export class FormularioActualizarComponent {
   cerrarModal(){
     // this.router.navigate(['7'])
     this.router.navigate(['/'])
+    Swal.fire({
+      title: "Cerrado!",
+      text: "Se cancelo la accion!",
+      icon: "error"
+    });
   }
 
   actualizar(){
@@ -82,7 +88,8 @@ export class FormularioActualizarComponent {
 
   /* Validación de campos */
   if( this.nombresUsuario.toString()==''
-  || this.apellidosUsuario.toString()=='' || this.emailUsuario.toString()=='' || this.telefonoUsuario.toString()==''){
+  || this.apellidosUsuario.toString()=='' || this.emailUsuario.toString()=='' || this.telefonoUsuario.toString()==''
+   || this.fechaNacimientoUsuario.toString()==''){
     this.errorCampo='Hay algunos campos vacios'
   } else{
        if(this.nombresUsuario.toString().length<3) {
@@ -110,13 +117,21 @@ export class FormularioActualizarComponent {
                   console.log(data, body);
                   if(data.exito == true){
                     this.router.navigate(['/'])
-                    alert("Se actualizo correctamente")
-              
+                    Swal.fire({
+                      title: "Perfecto!",
+                      text: "Se actualizo correctamente!!!",
+                      icon: "success"
+                    });
+
                   } else {
                     this.router.navigate(['/'])
-                    alert("hubo un error al actualizar el usuario")
+                    Swal.fire({
+                      title: "Hubo un fallo!",
+                      text: "No se actualizo correctamte :(",
+                      icon: "error"
+                    });
                   }});
-  
+
   }
 }
 }

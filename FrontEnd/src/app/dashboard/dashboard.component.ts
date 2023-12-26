@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -27,9 +29,29 @@ export class DashboardComponent {
     }
     async CambiarEstado(numDoc: any){
 
-      window.location.reload();
-      return this.http.delete<any>(`http://127.0.0.1:4000/api/usuario/${numDoc}`).subscribe(data => {
+      this.http.delete<any>(`http://127.0.0.1:4000/api/usuario/${numDoc}`).subscribe(data => {
+      console.log(data);
+      if(data.exito == true){
+          Swal.fire({
+            title: "Perfecto!",
+            text: "Se cambio el estado correctamente!",
+            icon: "success"
+          });
+          setTimeout(()=>{
+            window.location.reload();
+          }, 2000)
 
+        } else {
+          Swal.fire({
+            title: "Hubo un error!",
+            text: "Hubo un error en el cambio de estado :(",
+            icon: "error"
+          });
+          setTimeout(()=>{
+            window.location.reload();
+          }, 2000)
+
+        }
     })
 
     };

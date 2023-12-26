@@ -14,6 +14,7 @@ class UsuarioController{
         if (edadUsuario >= 18 && edadUsuario<=65 ) {
             viabilidad= viabilidad+1;
         } 
+        
 
         const usuario = new Usuario(body.numeroDocumentoUsuario, body.nombresUsuario, body.apellidosUsuario, body.idCiudadFKUsuario, body.fechaNacimientoUsuario, body.emailUsuario, edadUsuario, body.telefonoUsuario, estadoUsuario, viabilidad, body.idOcupacionFKUsuario);
         const res_guardar= await usuario.guardar();

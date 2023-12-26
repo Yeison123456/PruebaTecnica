@@ -62,6 +62,11 @@ export class FormularioRegistrarComponent {
 
   cerrarModal(){
     this.modal=false;
+    Swal.fire({
+      title: "Cerrado!",
+      text: "Se cancelo la accion!",
+      icon: "error"
+    });
 }
 
 
@@ -70,17 +75,17 @@ export class FormularioRegistrarComponent {
   const regexCorreo = /^[a-zA-Z0-9._-]+@gmail\.com$/;
 
 /* Validación de campos */
-if(this.numeroDocumentoUsuario.toString=='' || this.nombresUsuario.toString()==''
+if(this.numeroDocumentoUsuario.toString()=='' || this.nombresUsuario.toString()=='' || this.fechaNacimientoUsuario.toString()==''
 || this.apellidosUsuario.toString()=='' || this.emailUsuario.toString()=='' || this.telefonoUsuario.toString()==''){
   this.errorCampo='Hay algunos campos vacios'
 } else{
       if(this.numeroDocumentoUsuario.toString().length<5==true ||  this.numeroDocumentoUsuario<0){
-        this.errorCampo=`El numero de documento debe tener almenos 5 caracteres y mayor a 0, ${this.numeroDocumentoUsuario.toString()}`
+        this.errorCampo=`El numero de documento debe tener almenos 5 caracteres y mayor a 0`
       } else if(this.nombresUsuario.toString().length<3) {
         this.errorCampo="El nombre debe tener almenos 3 caracteres"
       } else if(this.apellidosUsuario.toString().length<3) {
         this.errorCampo="El apellido debe tener almenos 3 caracteres"
-      } else if(this.fechaNacimientoUsuario.toString()=='0000-00-00') {
+      } else if(this.fechaNacimientoUsuario.toString()=='00-00-0000') {
         this.errorCampo="debes poner una fecha de nacimineto"
       } else if(regexCorreo.test(this.emailUsuario)==false) {
         this.errorCampo="El correo electronico debe ser del dominio @gmail.com"
@@ -103,20 +108,20 @@ if(this.numeroDocumentoUsuario.toString=='' || this.nombresUsuario.toString()=='
           if(data.exito == true){
             this.modal
             window.location.reload();
-            alert('Se registro correctamete')
             Swal.fire({
-              title: 'Se registro correctamente',
-              icon: 'success',
-            })
+              title: "Perfecto!",
+              text: "Se registro correctamente!",
+              icon: "success"
+            });
 
           } else {
             this.modal
             window.location.reload();
-            alert('Hubo un error al momento de registrar')
             Swal.fire({
-              title: 'Se registro correctamente',
-              icon: 'error',
-            })
+              title: "Hubo un error!",
+              text: "Hubo un error en el registro :(",
+              icon: "error"
+            });
           }});
 
 
