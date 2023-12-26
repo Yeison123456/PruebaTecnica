@@ -63,7 +63,7 @@ export class DashboardComponent {
   }
 
   // Variables para paginación de datos
-  itemsPorPagina = 5;
+  itemsPorPagina = 4;
   paginaActual = 1;
 
   // Propiedad calculada para obtener datos paginados
