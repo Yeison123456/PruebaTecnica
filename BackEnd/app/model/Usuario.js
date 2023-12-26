@@ -64,7 +64,7 @@ class usuario{
     }
 
     static async listar(nro_documento){
-        const query=`Select numeroDocumentoUsuario, nombresUsuario, apellidosUsuario, nombreCiudad as idCiudadFKUsuario, idCiudad ,DATE_FORMAT(fechaNacimientoUsuario, '%Y/%m/%d') AS fechaNacimientoUsuario, emailUsuario, edadUsuario, telefonoUsuario, estadoUsuario,viabilidad, ocupacion as idOcupacionFKUsuario, idOcupacion from usuario inner join ocupaciones on usuario.idOcupacionFKUsuario=ocupaciones.idOcupacion inner join ciudades on usuario.idCiudadFKUsuario=ciudades.idCiudad where numeroDocumentoUsuario like '%${nro_documento}'; `;
+        const query=`Select numeroDocumentoUsuario, nombresUsuario, apellidosUsuario, nombreCiudad as idCiudadFKUsuario, idCiudad ,fechaNacimientoUsuario, emailUsuario, edadUsuario, telefonoUsuario, estadoUsuario,viabilidad, ocupacion as idOcupacionFKUsuario, idOcupacion from usuario inner join ocupaciones on usuario.idOcupacionFKUsuario=ocupaciones.idOcupacion inner join ciudades on usuario.idCiudadFKUsuario=ciudades.idCiudad where numeroDocumentoUsuario like '%${nro_documento}'; `;
 
         return await db.listar(query, true);
     }

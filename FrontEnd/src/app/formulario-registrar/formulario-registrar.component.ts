@@ -12,11 +12,11 @@ export class FormularioRegistrarComponent {
   numeroDocumentoUsuario: any;
   nombresUsuario: string='';
   apellidosUsuario: string='';
-  idCiudadFKUsuario: any;
+  idCiudadFKUsuario: any=1;
   fechaNacimientoUsuario: any;
   emailUsuario: string='';
   telefonoUsuario: any;
-  idOcupacionFKUsuario: any;
+  idOcupacionFKUsuario: any=1;
 
   errorCampo: String='';
 

@@ -19,6 +19,7 @@ export class FormularioActualizarComponent {
   ciudades: any[] = [];
   ocupaciones: any[] = [];
 
+  numeroDocumentoUsuario: any;
   nombresUsuario: string='';
   apellidosUsuario: string='';
   idCiudadFKUsuario: any;
@@ -41,6 +42,7 @@ export class FormularioActualizarComponent {
       if(data.exito == true){
       this.usuario=data.resultado
       console.log(this.usuario, 'aaaaaaaaaaaaaaaaaaaaaaa')
+      this.numeroDocumentoUsuario=this.usuario[0]['numeroDocumentoUsuario']
       this.nombresUsuario=this.usuario[0]['nombresUsuario']
       this.apellidosUsuario=this.usuario[0]['apellidosUsuario']
       this.idCiudadFKUsuario=this.usuario[0]['idCiudad']
@@ -104,6 +106,7 @@ export class FormularioActualizarComponent {
           this.errorCampo="El numero de telefono debe de ser de almenos 10 digitos"
         } else {
                 const body={
+                  "numeroDocumentoUsuario":this.numeroDocumentoUsuario,
                   "nombresUsuario": this.nombresUsuario,
                   "apellidosUsuario": this.apellidosUsuario,
                   "idCiudadFKUsuario": this.idCiudadFKUsuario,
