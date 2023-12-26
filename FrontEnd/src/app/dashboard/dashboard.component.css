@@ -44,3 +44,19 @@ td{
   background-color: rgb(79, 79, 221);
 
 }
+
+.div_buscar{
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  gap: 1%;
+}
+.buscar{
+  font-size: 30px;
+}
+
+.Input{
+  width: 22%;
+  border: none;
+  border-bottom: 1px solid black;
+}

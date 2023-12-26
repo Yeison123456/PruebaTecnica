@@ -7,7 +7,12 @@
   <div class="contenedorcuerpo" style="width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
     <div class="textCuerpo" style="width: 88%; font-size: 40px; display: flex; justify-content: space-between; margin-top: 5%;">
       <p>Informacion de los clientes</p>
+      
       <app-formulario-registrar></app-formulario-registrar>
+    </div>
+    <div class="div_buscar">
+      <label class="buscar" for="buscar">Buscar usuario: </label>
+      <input class="buscar Input" type="text" placeholder="buscar nombre, telefono, etc" name="buscar" [(ngModel)]="filtro">
     </div>
     <div class="tabla" *ngIf="usuarios && usuarios.length > 0">
       <table class="table" >
